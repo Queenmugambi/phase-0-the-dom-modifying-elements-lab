@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manipulating DOM Elements</title>
+  <style>
+    /* CSS styles */
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: lightblue;
+      padding: 20px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Container for dynamic content -->
+  <div id="container"></div>
+
+  <script>
+    // Function to add elements to the DOM
+    function addElementsToDOM() {
+      // Create a new div element
+      const newDiv = document.createElement('div');
+      newDiv.classList.add('box'); // Add CSS class to the div
+
+      // Add some text content to the div
+      newDiv.textContent = 'This is a dynamically created div element.';
+
+      // Append the div to an existing element in the DOM
+      const container = document.getElementById('container');
+      container.appendChild(newDiv);
+
+      // Update the element using innerHTML
+      newDiv.innerHTML += '<p>This is <strong>bold</strong> text.</p>';
+
+      // Change properties on DOM nodes (CSS styles)
+      newDiv.style.backgroundColor = 'lightgreen';
+    }
+
+    // Add elements to the DOM when the page loads
+    window.onload = function() {
+      addElementsToDOM();
+
+      // Remove elements from the DOM after 3 seconds
+      setTimeout(() => {
+        const container = document.getElementById('container');
+        container.innerHTML = ''; // Remove all child elements
+      }, 3000);
+    };
+  </script>
+</body>
+</html>
